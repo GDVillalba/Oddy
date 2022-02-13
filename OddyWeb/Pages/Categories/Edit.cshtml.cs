@@ -6,32 +6,27 @@ using OddyWeb.Model;
 namespace OddyWeb.Pages.Categories
 {
     //[BindProperties]  //binds all of the properties of the class
-    public class CreateModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _db;
         [BindProperty]    //Uses Category property inside methods 
         public Category Category { get; set; }
 
-        public CreateModel(ApplicationDbContext db)
+        public EditModel(ApplicationDbContext db)
         {
             _db = db;
         }
 
-        public void OnGet()
+        public void OnGet(int? id)
         {
-
+            Category = _db.Categories.Find(id);  // Find solo sirve para traer con la clave primaria
         }
 
         public async Task<IActionResult> OnPost()
         {
-            if(Category.Name == Category.DisplayOrder.ToString() )  // Custom Validation.
-            {
-                ModelState.AddModelError(String.Empty, "The Dislay Order cannot exactly match the Name.");
-            }
-
             if (ModelState.IsValid) //server side validation of Model
             {
-                await _db.Categories.AddAsync(Category);
+                _db.Categories.Update(Category);
                 await _db.SaveChangesAsync();
                 return RedirectToPage("Index");
             }

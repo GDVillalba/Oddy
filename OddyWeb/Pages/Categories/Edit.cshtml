@@ -1,8 +1,10 @@
 ﻿@page
-@model OddyWeb.Pages.Categories.CreateModel
+@model OddyWeb.Pages.Categories.EditModel
 
 
 <form method="post" >
+
+    <input asp-for="Category.Id" hidden />
 
     <div class="border box-shadow rounded p-3">
 
@@ -10,7 +12,7 @@
 
         <div class="form-group row pb-2">
 
-            <h2 class="text-info pl-3">Add Category</h2>
+            <h2 class="text-info pl-3">Edit Category</h2>
 
         </div>
         <div class="row p-2">
@@ -38,7 +40,7 @@
                     <div class="col-8 offset-4 row">
 
                         <div class="col">
-                            <input type="submit" class="btn btn-info w-100" value="Create" />
+                            <input type="submit" class="btn btn-info w-100" value="Update" />
                         </div>
                         <div class="col">
                             <a asp-page="Index" class="btn btn-success w-100">
@@ -60,9 +62,3 @@
     </div>
 
 </form>
-
-@section Scripts{
-    @{
-        <partial name="_ValidationScriptsPartial" />
-    }
-}
