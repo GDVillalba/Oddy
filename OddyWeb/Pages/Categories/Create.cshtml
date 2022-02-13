@@ -1,0 +1,62 @@
+﻿@page
+@model OddyWeb.Pages.Categories.CreateModel
+
+
+<form method="post" asp-action="Create">
+
+    <div class="border box-shadow rounded p-3">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group row pb-2">
+
+            <h2 class="text-info pl-3">Add Category</h2>
+
+        </div>
+        <div class="row p-2">
+            <div class="col-8">
+                <div class="form-group row p-2">
+                    <div class="col-4">
+                        <label asp-for="@Model.Category.Name"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="@Model.Category.Name" class="form-control" />
+                        <span asp-validation-for="@Model.Category.Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row p-2">
+                    <div class="col-4">
+                        <label asp-for="@Model.Category.DisplayOrder"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="@Model.Category.DisplayOrder" class="form-control" />
+                        <span asp-validation-for="@Model.Category.DisplayOrder" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row p-2">
+
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-100" value="Create" />
+                        </div>
+                        <div class="col">
+                            <a asp-page="Index" class="btn btn-success w-100">
+                                <i class="fas fa-sign-out-alt"></i> &nbsp; Back
+                            </a>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="col-4">
+                @* Keep this empty *@
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
