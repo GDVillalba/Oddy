@@ -28,6 +28,7 @@ namespace OddyWeb.Pages.Categories
             {
                 _db.Categories.Update(Category);
                 await _db.SaveChangesAsync();
+                TempData["success"] = "Category Updated Successfully";
                 return RedirectToPage("Index");
             }
             return Page();
