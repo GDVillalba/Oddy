@@ -1,5 +1,5 @@
 ﻿@page
-@model OddyWeb.Pages.Categories.EditModel
+@model OddyWeb.Pages.Categories.DeleteModel
 
 
 <form method="post" >
@@ -7,12 +7,10 @@
     <input asp-for="Category.Id" hidden />
 
     <div class="border box-shadow rounded p-3 shadow-sm">
-
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+                
         <div class="form-group row pb-2">
 
-            <h2 class="text-primary pl-3">Edit Category</h2>
+            <h2 class="text-primary pl-3">Delete Category</h2>
 
         </div>
         <div class="row p-2">
@@ -22,8 +20,7 @@
                         <label asp-for="Category.Name"></label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="Category.Name" class="form-control" />
-                        <span asp-validation-for="Category.Name" class="text-danger"></span>
+                        <input asp-for="Category.Name" disabled class="form-control" />                        
                     </div>
                 </div>
                 <div class="form-group row p-2">
@@ -31,8 +28,7 @@
                         <label asp-for="Category.DisplayOrder"></label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="Category.DisplayOrder" class="form-control" />
-                        <span asp-validation-for="Category.DisplayOrder" class="text-danger"></span>
+                        <input asp-for="Category.DisplayOrder" disabled class="form-control" />
                     </div>
                 </div>
                 <div class="form-group row p-2">
@@ -40,7 +36,7 @@
                     <div class="col-8 offset-4 row">
 
                         <div class="col">
-                            <input type="submit" class="btn btn-info w-100" value="Update" />
+                            <input type="submit" class="btn btn-danger w-100" value="Delete" />
                         </div>
                         <div class="col">
                             <a asp-page="Index" class="btn btn-success w-100">

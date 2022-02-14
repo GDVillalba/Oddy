@@ -6,13 +6,13 @@ using OddyWeb.Model;
 namespace OddyWeb.Pages.Categories
 {
     //[BindProperties]  //binds all of the properties of the class
-    public class EditModel : PageModel
+    public class DeleteModel : PageModel
     {
         private readonly ApplicationDbContext _db;
         [BindProperty]    //Uses Category property inside methods 
         public Category Category { get; set; }
 
-        public EditModel(ApplicationDbContext db)
+        public DeleteModel(ApplicationDbContext db)
         {
             _db = db;
         }
@@ -23,10 +23,12 @@ namespace OddyWeb.Pages.Categories
         }
 
         public async Task<IActionResult> OnPost()
-        {           
-            if (ModelState.IsValid) //server side validation of Model
+        {
+            var categoryFromDb = _db.Categories.Find(Category.Id); //As the fields Name and DisplayOrder are disabled Category only contains Category.Id
+
+            if (categoryFromDb != null) 
             {
-                _db.Categories.Update(Category);
+                _db.Categories.Remove(categoryFromDb);
                 await _db.SaveChangesAsync();
                 return RedirectToPage("Index");
             }
